@@ -39,12 +39,14 @@ Remember, the goal of these principles is to make the code as clear and easy to 
 
 ```
 // Bad practice
-function a(n: string, e: string, a: string = 'OK', c: boolean = true) { // Non-descriptive function name and parameters
+function a(n: string, e: string, a: string = 'OK', c: boolean = true) {
+    // Non-descriptive function name and parameters
     // ...
 }
 
 // Good practice
-function createDialogBox(title: string, body: string, buttonText: string = 'OK', cancellable: boolean = true) { // Use descriptive function names and default arguments
+function createDialogBox(title: string, body: string, buttonText: string = 'OK', cancellable: boolean = true) {
+    // Use descriptive function names and default arguments
     // ...
 }
 
@@ -52,6 +54,21 @@ function createDialogBox(title: string, body: string, buttonText: string = 'OK',
 function validateUser(user: User): boolean { // Use names that reveal intent
     return user.age >= 18 && user.isActive; // Avoids unnecessary temporary variables
 }
+
+
+interface MenuOptions {
+    title: string;
+    body: string;
+    buttonText?: string;
+    cancellable?: boolean;
+}
+
+// Good practice
+function createMenu(options: MenuOptions) {
+    const { title, body, buttonText = 'OK', cancellable = true } = options;
+    // ...
+}
+
 ```
 1. Use descriptive function names: createDialogBox and validateUser are examples of descriptive function names. They clearly indicate what the function does.
 
